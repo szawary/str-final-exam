@@ -1,13 +1,6 @@
 {
   "users": [
     {
-      "id": 8,
-      "name": "Stillman Crowche",
-      "email": "scrowche7@umich.edu",
-      "address": "53 Bunting Court",
-      "active": true
-    },
-    {
       "id": 9,
       "name": "Roderich Jimmison",
       "email": "rjimmison8@nih.gov",
@@ -663,13 +656,6 @@
       "name": "000tttt",
       "email": "000",
       "address": "000",
-      "active": true
-    },
-    {
-      "id": 103,
-      "name": "Szabó László",
-      "email": "laszalab@gmail.com",
-      "address": "Debrecen",
       "active": true
     }
   ]
