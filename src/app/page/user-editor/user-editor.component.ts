@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { User } from 'src/app/model/user';
@@ -19,11 +19,16 @@ export class UserEditorComponent implements OnInit {
    * 1. If the params.id is 0: new User().
    * 2. If the params.id isn't 0: a user from the database based on its id.
    */
+
+  isNew: boolean = true;
+
   user$: Observable<User> = this.activatedRoute.params.pipe(
     switchMap( params => {
       if (Number(params.id) === 0) {
         return of(new User());
       }
+
+      this.isNew = false;
 
       return this.userService.get(Number(params.id));
     })
@@ -32,9 +37,30 @@ export class UserEditorComponent implements OnInit {
   constructor(
     private userService: UserService,
     private activatedRoute: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
   }
+
+  onSave(user:User): void {
+    if (this.isNew) {
+
+      this.userService.create(user).subscribe(resp: any)=> {
+        alert('Az új felhasználó mentésre került.');
+        this.router.navigate(['users']);
+      }s
+
+
+    } else {
+      this.userService.update(user).subscribe(resp: any) => {
+        alert('A mentést elvégeztem.');
+        this.router.navigate(['users']);
+
+      };
+    }
+  }
+
+
 
 }
