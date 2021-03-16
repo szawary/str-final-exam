@@ -1,20 +1,6 @@
 {
   "users": [
     {
-      "id": 4,
-      "name": "Brigitte Morland",
-      "email": "bmorland3@biblegateway.com",
-      "address": "4514 Milwaukee Parkway",
-      "active": true
-    },
-    {
-      "id": 6,
-      "name": "Catherin Hammatt",
-      "email": "chammatt5@w3.org",
-      "address": "64923 Butterfield Parkway",
-      "active": false
-    },
-    {
       "id": 8,
       "name": "Stillman Crowche",
       "email": "scrowche7@umich.edu",
