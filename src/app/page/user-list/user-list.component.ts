@@ -12,6 +12,10 @@ export class UserListComponent implements OnInit {
 
   users$: Observable<User[]> = this.userService.getAll();
 
+  keyWord: string = '';
+
+  key: string = 'id';
+
   constructor(
     private userService: UserService,
   ) { }
@@ -28,4 +32,15 @@ export class UserListComponent implements OnInit {
       });
     }
   }
+
+
+  onFilter(event: Event): void {
+    this.keyWord = (event.target as HTMLInputElement).value;
+  }
+
+
+  onOrder(key: string): void {
+  this.key = key;
+  }
+
 }
