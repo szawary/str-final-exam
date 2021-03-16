@@ -49,7 +49,7 @@ export class UserService {
    */
 
   create(user: User): Observable<any> {
-    let url=this.endpoint;
+    let url = this.endpoint;
     return this.http.post(url, user);
   }
 

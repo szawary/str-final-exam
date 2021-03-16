@@ -20,7 +20,7 @@ export class UserEditorComponent implements OnInit {
    * 2. If the params.id isn't 0: a user from the database based on its id.
    */
 
-  isNew: boolean = true;
+  isUserNew: boolean = true;
 
   user$: Observable<User> = this.activatedRoute.params.pipe(
     switchMap( params => {
@@ -28,7 +28,7 @@ export class UserEditorComponent implements OnInit {
         return of(new User());
       }
 
-      this.isNew = false;
+      this.isUserNew = false;
 
       return this.userService.get(Number(params.id));
     })
@@ -44,20 +44,20 @@ export class UserEditorComponent implements OnInit {
   }
 
   onSave(user:User): void {
-    if (this.isNew) {
+    if (this.isUserNew) {
 
-      this.userService.create(user).subscribe(resp: any)=> {
+      this.userService.create(user).subscribe((resp: any)=> {
         alert('Az új felhasználó mentésre került.');
         this.router.navigate(['users']);
-      }s
+      })
 
 
     } else {
-      this.userService.update(user).subscribe(resp: any) => {
+      this.userService.update(user).subscribe((resp: any) => {
         alert('A mentést elvégeztem.');
         this.router.navigate(['users']);
 
-      };
+      });
     }
   }
 
